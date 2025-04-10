@@ -33,6 +33,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'chat',
+    'mainsite',
+
 ]
 
 MIDDLEWARE = [
@@ -116,3 +118,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# GPT settings
+OPENAI_MODEL = "gpt-3.5-turbo"
+OPENAI_SYSTEM_PROMPT = (
+    "You are a professional report summarizer. "
+    "Summarize the following document clearly and concisely, "
+    "highlighting the most important points, key insights, and conclusions. "
+    "Avoid unnecessary details."
+)

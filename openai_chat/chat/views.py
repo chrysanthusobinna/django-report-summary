@@ -20,12 +20,13 @@ class ChatAPIView(APIView):
 
             try:
                 response = client.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                    model=settings.OPENAI_MODEL,
                     messages=[
-                        {"role": "system", "content": "You are a professional report summarizer. Summarize the following document clearly and concisely, highlighting the most important points, key insights, and conclusions. Avoid unnecessary details."},
+                        {"role": "system", "content": settings.OPENAI_SYSTEM_PROMPT},
                         {"role": "user", "content": question}
                     ]
                 )
+
                 answer = response.choices[0].message.content.strip()
                 return Response({"answer": answer})
 
@@ -33,3 +34,5 @@ class ChatAPIView(APIView):
                 return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
