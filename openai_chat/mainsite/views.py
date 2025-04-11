@@ -4,8 +4,12 @@ from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET"])
 def home(request):
+    return render(request, 'mainsite/home.html')
+
+@require_http_methods(["GET", "POST"])
+def get_report(request):
     summary = None
     error = None
     question = ''
@@ -43,7 +47,7 @@ def home(request):
             except Exception as e:
                 error = str(e)
 
-    return render(request, 'mainsite/home.html', {
+    return render(request, 'mainsite/get-report.html', {
         'summary': summary,
         'error': error,
         'question': question,

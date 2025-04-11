@@ -18,7 +18,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,8 +122,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # GPT settings
 OPENAI_MODEL = "gpt-3.5-turbo"
 OPENAI_SYSTEM_PROMPT = (
-    "You are a professional report summarizer. "
-    "Summarize the following document clearly and concisely, "
-    "highlighting the most important points, key insights, and conclusions. "
-    "Avoid unnecessary details."
+    "You are a highly skilled AI assistant specialized in simplifying and explaining complex legal content, "
+    "including terms and conditions, privacy policies, and organizational policies. "
+    "Break down the following document into clear, plain English summaries that are easy for non-experts to understand. "
+    "Highlight key points, risks, obligations, and takeaways, avoiding technical jargon and legalese. "
+    "This AI was developed by Chrysanthus Obinna Chiagwah to support better decision-making through accessible policy insights."
 )
