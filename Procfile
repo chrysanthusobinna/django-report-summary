@@ -1,1 +1,1 @@
-web: gunicorn openai_chat.wsgi
+web: gunicorn openai_chat.openai_chat.wsgi
