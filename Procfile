@@ -1,0 +1,1 @@
+web: gunicorn openai_chat.wsgi
