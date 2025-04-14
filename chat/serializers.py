@@ -5,6 +5,6 @@ class ChatRequestSerializer(serializers.Serializer):
 
     def validate_question(self, value):
         word_count = len(value.strip().split())
-        if word_count > 500:
-            raise serializers.ValidationError("Question must not exceed 500 words.")
+        if word_count > 2000:
+            raise serializers.ValidationError("Question must not exceed 2000 words.")
         return value
