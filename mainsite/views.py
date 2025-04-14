@@ -33,8 +33,8 @@ def get_report(request):
         # Validate content
         elif not question:
             error = "Report content is required."
-        elif word_count > 500:
-            error = "Report must not exceed 500 words."
+        elif word_count > 2000:
+            error = "Report must not exceed 2000 words."
         else:
             try:
                 client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
