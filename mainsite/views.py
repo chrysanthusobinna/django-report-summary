@@ -1,5 +1,6 @@
 import openai
 import random
+import markdown
 from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -11,6 +12,7 @@ def home(request):
 @require_http_methods(["GET", "POST"])
 def get_report(request):
     summary = None
+    formatted_summary = None
     error = None
     question = ''
 
@@ -44,11 +46,12 @@ def get_report(request):
                     ]
                 )
                 summary = response.choices[0].message.content.strip()
+                formatted_summary = markdown.markdown(summary)
             except Exception as e:
                 error = str(e)
 
     return render(request, 'mainsite/get-report.html', {
-        'summary': summary,
+        'summary': formatted_summary,
         'error': error,
         'question': question,
         'a': a,

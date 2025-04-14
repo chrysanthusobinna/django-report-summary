@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Santhus AI Summarise</title>
+    <title>AI Policy Summariser</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -131,10 +131,9 @@
 
     <!-- Summary Card -->
     {% if summary %}
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-primary text-white">Summary</div>
+    <div class="card shadow-sm mb-4 summary-card">
         <div class="card-body">
-            <p class="card-text" id="summaryText">{{ summary }}</p>
+            <div class="card-text" id="summaryText">{{ summary|safe }}</div>
         </div>
         <div class="card-footer d-flex justify-content-between">
             <a href="{% url 'get_report' %}" class="btn btn-outline-secondary">
@@ -146,6 +145,7 @@
         </div>
     </div>
     {% endif %}
+
 
     <!-- API Info -->
     <div class="text-center mt-4">
